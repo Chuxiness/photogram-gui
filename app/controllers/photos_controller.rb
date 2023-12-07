@@ -1,6 +1,15 @@
 class PhotosController < ApplicationController
 
-def show
+  def bai
+    the_id=params.fetch("toast_id")
+    matching_photos = Photo.where({:id => the_id})
+    the_photo = matching_photos.at(0)
+    the_photo.destroy
+    redirect_to("/photos")
+    #render({ :template => "photo_templates/bai"})
+  end
+
+  def show
   url_id=params.fetch("path_id")
   @the_photo = Photo.where({:id => url_id}).at(0)
   render({ :template => "photo_templates/show"})
