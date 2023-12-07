@@ -1,4 +1,10 @@
 class PhotosController < ApplicationController
+  def comment
+    new_comment=Comment.new
+    new_comment.body=params.fetch("input_comment")
+    redirect_to("/photos/"+the_image.id.to_s)
+  end
+  
   def update
     the_id=params.fetch("modify_id")
     matching_image=Photo.where({:id => the_id})
