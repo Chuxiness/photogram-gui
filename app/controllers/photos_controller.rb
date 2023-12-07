@@ -1,4 +1,14 @@
 class PhotosController < ApplicationController
+  def insert
+    new_image = Photo.new
+    new_image.image=params.fetch("input_image")
+    new_image.caption=params.fetch("input_caption")
+    new_image.owner_id=params.fetch("input_owner_id")
+    new_image.save
+    redirect_to("/photos")
+  end
+
+
 
   def bai
     the_id=params.fetch("toast_id")
