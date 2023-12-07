@@ -3,6 +3,9 @@ get("/", { :controller =>"users", :action => "index"})
 get("/users", { :controller =>"users", :action => "index"})
 get("/users/:path_username", { :controller =>"users", :action => "show"})
 post("/add_user", { :controller =>"users", :action => "add"})
+post("/update_user/:di", { :controller =>"users", :action => "update"})
+
+
 
 get("/photos", { :controller =>"photos", :action => "index"})
 get("/photos/:path_id", { :controller =>"photos", :action => "show"})
