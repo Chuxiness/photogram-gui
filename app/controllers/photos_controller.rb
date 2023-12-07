@@ -1,11 +1,25 @@
 class PhotosController < ApplicationController
+  def update
+    the_id=params.fetch("modify_id")
+    matching_image=Photo.where({:id => the_id})
+    the_image=matching_image.at(0)
+    the_image.image=params.fetch("input_image")
+    the_image.caption=params.fetch("input_caption")
+    #the_image.owner_id=params.fetch("input_owner_id")
+    the_image.save
+    redirect_to("/photos/"+the_image.id.to_s)
+  end
+  
+  
   def insert
     new_image = Photo.new
     new_image.image=params.fetch("input_image")
     new_image.caption=params.fetch("input_caption")
     new_image.owner_id=params.fetch("input_owner_id")
     new_image.save
-    redirect_to("/photos")
+    #@the_photo = new_image
+    #render({ :template => "photo_templates/show"})  
+    redirect_to("/photos/"+new_image.id.to_s)
   end
 
 
